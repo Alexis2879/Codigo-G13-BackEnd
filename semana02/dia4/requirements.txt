@@ -1,4 +1,4 @@
-#pip install flask
+#pip install flask  ### pip instal -r requirements.txt
 flask
 firebase_admin
 python-dotenv
