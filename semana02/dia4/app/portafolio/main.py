@@ -19,7 +19,7 @@ db = firestore.client()
 app = Flask(__name__)
 
 #creamos una clave secreta para las variables de sesión
-app.secret_key = 'fatima2020'
+app.secret_key = 'qwerty123456'
 
 @app.route('/')
 def index():

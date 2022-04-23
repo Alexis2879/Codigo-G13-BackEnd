@@ -2,3 +2,8 @@
 flask
 firebase_admin
 python-dotenv
+#extensiones  de flask
+flask-bootstrap  # integra bootstrap con flask
+Flask-WTF  #WHAT the form
+pyrebase4
+
