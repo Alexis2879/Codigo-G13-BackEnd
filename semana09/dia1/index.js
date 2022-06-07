@@ -36,7 +36,7 @@ const Alumnos = sequelize.define(
 )
 
 //migraciones
-sequelize.sync({force:true})
+/*sequelize.sync({force:true})
 .then(()=>{
     console.log("tablass migradas");
     Alumnos.bulkCreate(
@@ -48,5 +48,47 @@ sequelize.sync({force:true})
         return Alumnos.findAll();
     }).then(function(alumnos){
         console.log(alumnos);
+    })
+})*/
+
+//CREACIÓN DE ENDPOINTS
+app.get('/alumno',(req,res)=>{
+    Alumnos.findAll()
+    .then(
+        alumnos => res.json(alumnos)
+    )
+})
+
+app.use(express.json());
+
+app.post('/alumno',(req,res)=>{
+    Alumnos.create(
+        {
+            nombre: req.body.nombre,
+            email: req.body.email
+        }
+    ).then(function(alumnos){
+        res.json(alumnos);
+    })
+})
+
+app.put('/alumno/:id',(req,res)=>{
+    Alumnos.findByPk(req.params.id)
+    .then(function(alumnos){
+        alumnos.update({
+            nombre:req.body.nombre,
+            email:req.body.email
+        }).then(function(alumnos){
+            res.json(alumnos);
+        })
+    })
+})
+
+app.delete('/alumno/:id',(req,res)=>{
+    Alumnos.findByPk(req.params.id)
+    .then(function(alumnos){
+        alumnos.destroy();
+    }).then(function(alumnos){
+        res.sendStatus(201);
     })
 })
