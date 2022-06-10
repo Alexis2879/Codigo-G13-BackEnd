@@ -26,3 +26,21 @@ class Cliente(models.Model):
 
     def __str__(self):
         return self.telefono
+
+class Pedido(models.Model):
+    fecha = models.DateTimeField(auto_now_add=True)
+    nro = models.CharField(max_length=20)
+    estado = models.CharField(max_length=20,default='solicitado')
+    cliente = models.ForeignKey(Cliente,on_delete=models.RESTRICT)
+
+    def __str__(self):
+        return self.nro
+
+class PedidoDetalle(models.Model):
+    producto = models.ForeignKey(Producto,on_delete=models.RESTRICT)
+    pedido = models.ForeignKey(Pedido,on_delete=models.RESTRICT)
+    cantidad = models.IntegerField(default=1)
+    precio = models.DecimalField(max_digits=10,decimal_places=2)
+
+    def __str__(self):
+        return self.cantidad
