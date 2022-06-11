@@ -5,7 +5,13 @@ const config ={
     mysql_user : process.env.MYSQL_USER || 'root',
     mysql_pwd : process.env.MYSQL_PWD || 'root',
     mysql_host : process.env.MYSQL_HOST || 'localhost',
-    mysql_db : process.env.MYSQL_DB || 'db_shop'
+    mysql_db : process.env.MYSQL_DB || 'db_shop',
+    ms_clientes : {
+        port : process.env.MS_CLIENTES_PORT || 5001
+    },
+    ms_pedidos :{
+        port : process.env.MS_PEDIDOS_PORT || 5002
+    }
 }
 
 module.exports = {config}
